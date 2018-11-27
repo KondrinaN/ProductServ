@@ -112,7 +112,7 @@ fetch('/rest', { method: 'POST', headers: {'Context-Type': 'application/json'}, 
         }
     }
 
-    //удаление
+    //удаление продукта из БД
     @DeleteMapping("{id}")
     public void deleteProduct(@PathVariable Long id)
     {
