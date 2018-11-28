@@ -5,6 +5,7 @@ import com.example.service.models.Product;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.util.JSONPObject;
 import jdk.nashorn.internal.parser.JSONParser;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -40,7 +41,7 @@ public class myControllerREST {
     }*/
 
     @GetMapping("{id}")
-    public Optional<Product> getElementById(@PathVariable Long id)
+    public Optional<Product> getElementById(@PathVariable Long id) // или @PathVariable("id") Product product, тогда в return product.
     {
         return productDAOJpa.findById(id);
     }
@@ -59,7 +60,6 @@ fetch('/rest', { method: 'POST', headers: {'Context-Type': 'application/json'}, 
     @PostMapping
     public Product createProduct(@RequestBody String product)
     {
-
         try {
             Product pr = new ObjectMapper().readValue(product, Product.class);
 
@@ -71,11 +71,13 @@ fetch('/rest', { method: 'POST', headers: {'Context-Type': 'application/json'}, 
         catch(IOException exc)
         {
             return null;
+
         }
     }
 
   /*  @PostMapping
-    public Product createProduct(Product pr)
+    public Product createProduct(  //@RequestBody Product product  и тогда просто return productDAOJpa.save(product);
+    Product pr)
     {
 
         try {

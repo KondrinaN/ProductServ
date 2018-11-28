@@ -16,11 +16,11 @@
 <h2>Сервис продуктов rest</h2>
 <%-- ${hello}--%>
 
-<form id="productsAdd" method="POST">
+<form id="productsAdd" method="POST" modelAttribute="product">
     <p><input type="text" name="name"/></p>
     <p><input type="text" name="count"/></p>
     <p><input type="text" name="price"/></p>
-    <p><input type="submit" name="SaveProduct" value="Сохранить продукт"/></p>
+    <p><input type="submit" name="SaveProduct" value="Сохранить продукт" /></p>
 </form>
 
 </body>
